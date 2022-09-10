@@ -1,11 +1,22 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
+import 'package:fluttericon/maki_icons.dart';
+import 'package:fluttericon/rpg_awesome_icons.dart';
+import 'package:fluttericon/font_awesome_icons.dart';
 import 'package:appbar_large/widgets/list_events.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  int _value = 1;
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: 4,
+      length: 8,
       child: Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.grey[900],
@@ -15,13 +26,32 @@ class HomePage extends StatelessWidget {
             tooltip: 'Location',
             onPressed: () {},
           ),
-          title: Text(
-            "New York, USA",
-            style: TextStyle(
-              fontSize: 14,
-              decoration: TextDecoration.underline,
-            ),
-          ),
+          title: DropdownButton(
+              style: TextStyle(color: Colors.white),
+              focusColor: Colors.grey[900],
+              iconEnabledColor: Colors.white,
+              dropdownColor: Colors.grey[800],
+              value: _value,
+              items: [
+                DropdownMenuItem(
+                  child: Text("Monterrey"),
+                  value: 1,
+                ),
+                DropdownMenuItem(
+                  child: Text("Guadalajara"),
+                  value: 2,
+                ),
+                DropdownMenuItem(
+                  child: Text("CDMX"),
+                  value: 3,
+                )
+              ],
+              onChanged: (int? value) {
+                setState(() {
+                  _value = value!;
+                });
+              },
+              hint: Text("Select item")),
           actions: <Widget>[
             IconButton(
               icon: const Icon(Icons.account_circle, size: 30.0),
@@ -41,40 +71,80 @@ class HomePage extends StatelessWidget {
                     width: 90,
                     child: Tab(
                       icon: Icon(
-                        Icons.home,
+                        Maki.art_gallery,
                         color: Colors.white,
                       ),
-                      text: "Home",
+                      text: "Galerias",
                     ),
                   ),
                   Container(
                     width: 90,
                     child: Tab(
                       icon: Icon(
-                        Icons.settings,
+                        Icons.family_restroom,
                         color: Colors.white,
                       ),
-                      text: "Settings",
+                      text: "Familiar",
                     ),
                   ),
                   Container(
                     width: 90,
                     child: Tab(
                       icon: Icon(
-                        Icons.person,
+                        Icons.eco,
                         color: Colors.white,
                       ),
-                      text: "Personal",
+                      text: "Ecoturismo",
                     ),
                   ),
                   Container(
                     width: 90,
                     child: Tab(
                       icon: Icon(
-                        Icons.person,
+                        FontAwesome.shopping_bag,
                         color: Colors.white,
                       ),
-                      text: "Personal",
+                      text: "Compras",
+                    ),
+                  ),
+                  Container(
+                    width: 90,
+                    child: Tab(
+                      icon: Icon(
+                        RpgAwesome.vase,
+                        color: Colors.white,
+                      ),
+                      text: "Arqueologia",
+                    ),
+                  ),
+                  Container(
+                    width: 90,
+                    child: Tab(
+                      icon: Icon(
+                        FontAwesome.map,
+                        color: Colors.white,
+                      ),
+                      text: "Aventura",
+                    ),
+                  ),
+                  Container(
+                    width: 90,
+                    child: Tab(
+                      icon: Icon(
+                        Maki.museum,
+                        color: Colors.white,
+                      ),
+                      text: "Museos",
+                    ),
+                  ),
+                  Container(
+                    width: 90,
+                    child: Tab(
+                      icon: Icon(
+                        Icons.star,
+                        color: Colors.white,
+                      ),
+                      text: "Atractivos",
                     ),
                   ),
                 ]),
@@ -101,6 +171,26 @@ class HomePage extends StatelessWidget {
                 Container(
                   child: Center(
                     child: Text("Cuarta Pantalla"),
+                  ),
+                ),
+                Container(
+                  child: Center(
+                    child: Text("Quinta Pantalla"),
+                  ),
+                ),
+                Container(
+                  child: Center(
+                    child: Text("Sexta Pantalla"),
+                  ),
+                ),
+                Container(
+                  child: Center(
+                    child: Text("Septima Pantalla"),
+                  ),
+                ),
+                Container(
+                  child: Center(
+                    child: Text("Octava Pantalla"),
                   ),
                 ),
               ],
